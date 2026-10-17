@@ -4,7 +4,7 @@ html::after {
   position: fixed;
   inset: 0;
   z-index: 2;
-  background: var(--bg, #faf9f6);
+  background: var(--wipe-bg, var(--bg, #faf9f6));
   transform: translateY(100%);
   pointer-events: none;
   visibility: hidden;

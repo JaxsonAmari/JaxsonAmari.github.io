@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-page="beginner">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,12 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../page-themes.css">
   <link rel="stylesheet" href="../page-transition.css">
   <script src="../page-transition.js" data-page-transition></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header><a class="site-name" href="index.html">Clarinet lessons</a><nav aria-label="Main navigation"><a href="../index.html">Portfolio</a><a href="index.html#lessons">Lesson plans</a></nav></header>
+  <header>
+    <a class="site-name" href="../index.html">jaxson amari</a>
+    <nav aria-label="Main navigation"><a href="../resume/">R&eacute;sum&eacute;</a><a href="../recordings/">Recordings</a><a href="../lessons/" aria-current="page">Lessons</a><a href="../contact/">Contact</a></nav>
+  </header>
   <main id="main" tabindex="-1">
     <section class="rate-intro" data-od-id="beginner-intro" aria-labelledby="title">
       <a class="back-link" href="index.html#lessons">&larr; All lesson plans</a>
@@ -25,7 +29,7 @@
       <div><h2 id="rates-title">Lesson rates</h2><p class="rate-status">$20</p><p>Per 30-minute lesson.</p></div>
       <div class="included"><h2>What we'll work on</h2><p>Tone, reading music, fingerings, and band assignments.</p></div>
     </section>
-    <p class="booking-note">Booking and contact details will be added here when available.</p>
+    <div class="booking-note"><p>Ask about availability or a trial lesson.</p><a class="button" href="../contact/">Contact Jaxson <span aria-hidden="true">&rarr;</span></a></div>
   </main>
   <footer><span>Clarinet lessons</span><a href="index.html#lessons">All lesson plans</a></footer>
 </body>

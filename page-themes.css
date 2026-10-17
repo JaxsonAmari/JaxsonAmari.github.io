@@ -1,0 +1,32 @@
+/* Page colors share navy text and the owner's pink/blue/yellow palette. */
+:root[data-page="home"] { --bg: #faf9f6; }
+:root[data-page="resume"] { --bg: #f9ecec; }
+:root[data-page="lessons"] { --bg: #c7e1fa; }
+:root[data-page="beginner"] { --bg: #f8d9dc; }
+:root[data-page="advanced"] { --bg: #accbed; }
+:root[data-page="contact"] { --bg: #fce6b2; }
+:root[data-page="recordings"] { --bg: #f8d3b0; }
+
+.button, .qualifications-link a, button {
+  transition: background-color 150ms ease-out, color 150ms ease-out, border-color 150ms ease-out;
+}
+.experience-entry summary { transition: background-color 150ms ease-out; }
+[data-page="resume"] .experience-entry summary:hover,
+[data-page="resume"] .experience-entry summary:focus-visible { background: var(--surface); }
+
+.home-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  padding-block: 48px 72px;
+}
+.home-intro h1 { font-size: clamp(44px, 6.5vw, 72px); }
+.portrait { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; }
+@media (max-width: 700px) {
+  .home-intro { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 32px 48px; }
+  .portrait { max-width: 360px; justify-self: end; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button, .qualifications-link a, button, .experience-entry summary { transition: none; }
+}

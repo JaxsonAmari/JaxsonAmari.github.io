@@ -5,7 +5,7 @@
   --rule: rgb(2 45 95 / 20%);
   --surface: #f68e92;
   --surface-soft: #f9a0a3;
-  --accent: #fcd600;
+  --accent: #ffed87;
   --font-display: 'Manrope', 'Geist', 'Poppins', sans-serif;
   --font-body: 'Manrope', 'Geist', 'Poppins', sans-serif;
   --font-label: 'Geist Mono', monospace;
@@ -72,3 +72,14 @@ footer { margin-top: 72px; border-top: 1px solid var(--rule); padding-block: 20p
 }
 
 nav { display: flex; flex-wrap: wrap; gap: 24px; }
+
+.teacher-note { margin-top: 20px; max-width: 60ch; }
+.qualifications-link { margin-top: 32px; margin-bottom: 0; }
+.qualifications-link a { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 56px; max-width: 100%; padding: 14px 24px; background: var(--accent); color: var(--fg); border: 2px solid var(--fg); font-size: var(--text-lede); font-weight: 700; text-decoration: none; }
+.qualifications-link a:hover { background: var(--fg); color: var(--accent); }
+.qualifications-link a:active { background: var(--muted); color: var(--accent); }
+.lesson-inquiry { margin-top: 32px; max-width: 65ch; }
+.lesson-inquiry a { display: inline-block; padding-block: 10px; }
+.booking-note p { margin-bottom: 16px; }
+nav [aria-current="page"] { text-decoration-thickness: 2px; }
+@media (max-width: 640px) { header { padding-block: 16px; } }

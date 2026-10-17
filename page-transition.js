@@ -11,11 +11,17 @@
     sessionStorage.removeItem(storageKey);
     arriving = !reducedMotion.matches && pending?.path === location.pathname &&
       Date.now() - pending.time < 5000;
-    if (arriving) root.classList.add('page-arriving');
+    if (arriving) {
+      if (typeof pending.color === 'string' && /^#[0-9a-f]{6}$/i.test(pending.color)) {
+        root.style.setProperty('--wipe-bg', pending.color);
+      }
+      root.classList.add('page-arriving');
+    }
   } catch { /* Navigation still works when storage is unavailable. */ }
 
   function clear() {
     root.classList.remove('page-cover', 'page-arriving', 'page-reveal');
+    root.style.removeProperty('--wipe-bg');
     busy = false;
   }
 
@@ -31,12 +37,13 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     if (arriving) reveal();
-    document.querySelectorAll('header a[href]').forEach(link => {
+    document.querySelectorAll('a[href]:not(.skip-link)').forEach(link => {
       link.addEventListener('click', event => {
         if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey ||
             event.altKey || (link.target && link.target !== '_self') ||
             link.hasAttribute('download') || reducedMotion.matches) return;
         const destination = new URL(link.href);
+        if (!['http:', 'https:', 'file:'].includes(destination.protocol)) return;
         // Preserve direct-file previews while retaining clean URLs on the server.
         if (location.protocol === 'file:' && link.getAttribute('href') === '/') {
           destination.href = new URL(document.querySelector('script[data-page-transition]').src).href
@@ -48,11 +55,8 @@
         if (destination.origin !== location.origin) return;
         event.preventDefault();
         if (busy) return;
-        busy = true;
-        root.classList.add('page-cover');
         const homePath = path => path.replace(/index\.html$/, '').replace(/\/$/, '');
-        setTimeout(() => {
-          if (homePath(destination.pathname) === homePath(location.pathname) &&
+        if (homePath(destination.pathname) === homePath(location.pathname) &&
               destination.search === location.search) {
             let target = document.querySelector('main');
             if (destination.hash) {
@@ -71,14 +75,18 @@
               target.focus({ preventScroll: true });
               if (temporaryTabindex) target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
             }
-            reveal();
-          } else {
+            return;
+        }
+        busy = true;
+        const coverColor = getComputedStyle(root).getPropertyValue('--bg').trim();
+        root.style.setProperty('--wipe-bg', coverColor);
+        root.classList.add('page-cover');
+        setTimeout(() => {
             try {
-              sessionStorage.setItem(storageKey, JSON.stringify({ path: destination.pathname, time: Date.now() }));
+              sessionStorage.setItem(storageKey, JSON.stringify({ path: destination.pathname, color: coverColor, time: Date.now() }));
             } catch { /* The outgoing wipe still works without storage. */ }
             location.assign(destination.href);
             setTimeout(clear, 1500);
-          }
         }, 380);
       });
     });

@@ -1,13 +1,16 @@
-# Portfolio and clarinet lessons
+﻿# Portfolio and clarinet lessons
 
-Static site for GitHub Pages. No dependencies or build step.
+Static GitHub Pages site. No build step or dependencies.
 
-- `index.html` and `styles.css`: main portfolio at `https://JaxsonAmari.github.io/`.
-- `lessons/index.html`: lesson plans at `https://JaxsonAmari.github.io/lessons/`.
-- `lessons/beginner-rates.html` and `lessons/advanced-rates.html`: individual rates pages.
-- `lessons/styles.css`: self-contained lesson styling.
-- Root-level rate pages redirect old links to their new locations.
+- `/`: concise portfolio homepage with recordings and a lessons link.
+- `/resume/`: biography, skills, seven expandable experience entries, education, and awards.
+- `/lessons/`: beginner/intermediate and advanced clarinet lesson plans, plus oboe availability on request.
+- `/lessons/beginner-rates.html`: $20 per 30-minute lesson.
+- `/lessons/advanced-rates.html`: $30 per 30-minute lesson.
+- `/contact/`: phone, email, and location supplied by Jaxson. Both rates pages link here.
 
-Publish the repository root with GitHub Pages. `/lessons/` is a path on the same site, so no custom domain or DNS setup is needed. These files have not been published by the assistant.
+All five pages use the same header text: jaxson amari; Portfolio; Resume; Recordings; Lessons; Contact. Header links use the shared upward wipe with reduced-motion support.
 
-Portfolio name is based on the repository owner's handle. Add actual recordings, biography, and contact information when supplied. Beginner/intermediate lessons cost $20 per 30 minutes; advanced lessons cost $30 per 30 minutes. Do not invent credentials or portfolio projects.
+Serve the repository root with a local static server to use directory URLs. Publish the repository root through GitHub Pages when ready. Root-level rate files preserve old URLs by redirecting to the lesson pages.
+
+Portfolio and teaching information comes from the owner-provided résumé and flyer. The flyer’s QR code and image are not included. Real recordings can replace the current coming-soon message. These changes are local until published.
