@@ -1,0 +1,28 @@
+/* One fixed layer covers both the outgoing and incoming page. */
+html::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  background: var(--bg, #faf9f6);
+  transform: translateY(100%);
+  pointer-events: none;
+  visibility: hidden;
+}
+html.page-cover::after,
+html.page-arriving::after {
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+html.page-cover::after {
+  transition: transform 360ms cubic-bezier(.22, 1, .36, 1);
+}
+html.page-reveal::after {
+  visibility: visible;
+  transform: translateY(-100%);
+  transition: transform 440ms cubic-bezier(.22, 1, .36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  html::after { display: none; }
+}
