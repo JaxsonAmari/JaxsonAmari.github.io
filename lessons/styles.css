@@ -38,7 +38,7 @@ p { margin: 0 0 20px; max-width: 65ch; text-wrap: pretty; }
 .plan { background: var(--surface); padding: 32px; display: flex; flex-direction: column; align-items: start; }
 .advanced { background: var(--surface-soft); }
 .plan h3 { font-size: var(--text-heading); line-height: 1.15; letter-spacing: -.02em; margin: 0 0 16px; min-height: 2.3em; }
-.audience { font-size: var(--text-small); line-height: 1.5; letter-spacing: .01em; color: var(--muted); min-height: 3em; }
+.audience { font-size: var(--text-lede); font-weight: 500; line-height: 1.4; color: var(--muted); min-height: 2.8em; }
 .plan > p:last-of-type { margin-bottom: 32px; }
 .button { display: inline-flex; align-items: center; justify-content: space-between; gap: 32px; min-height: 48px; padding: 12px 20px; background: var(--fg); color: var(--bg); font-size: var(--text-small); font-weight: 500; letter-spacing: .02em; text-decoration: none; margin-top: auto; }
 .button:hover { background: var(--muted); text-decoration: underline; }
