@@ -5,6 +5,19 @@
   let busy = false;
   let arriving = false;
 
+  function sizeWipe() {
+    const viewport = window.visualViewport;
+    const width = Math.max(root.clientWidth, window.innerWidth,
+      viewport ? viewport.width + viewport.offsetLeft : 0);
+    const height = Math.max(root.clientHeight, window.innerHeight,
+      viewport ? viewport.height + viewport.offsetTop : 0);
+    root.style.setProperty('--wipe-width', `${Math.ceil(width)}px`);
+    root.style.setProperty('--wipe-height', `${Math.ceil(height)}px`);
+  }
+  sizeWipe();
+  window.addEventListener('resize', sizeWipe, { passive: true });
+  window.visualViewport?.addEventListener('resize', sizeWipe, { passive: true });
+
   // Runs in the head so the incoming page starts covered before its first paint.
   try {
     const pending = JSON.parse(sessionStorage.getItem(storageKey) || 'null');
@@ -78,6 +91,7 @@
             return;
         }
         busy = true;
+        sizeWipe();
         const coverColor = getComputedStyle(root).getPropertyValue('--bg').trim();
         root.style.setProperty('--wipe-bg', coverColor);
         root.classList.add('page-cover');

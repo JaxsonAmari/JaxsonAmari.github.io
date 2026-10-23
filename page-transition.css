@@ -2,7 +2,13 @@
 html::after {
   content: '';
   position: fixed;
-  inset: 0;
+  /* Overscan the large viewport so mobile browser bars cannot expose a gap. */
+  inset: -2px auto auto -2px;
+  width: calc(100% + 4px);
+  height: calc(100vh + 4px);
+  height: calc(100lvh + 4px);
+  min-width: calc(var(--wipe-width, 0px) + 4px);
+  min-height: calc(var(--wipe-height, 0px) + 4px);
   z-index: 2;
   background: var(--wipe-bg, var(--bg, #faf9f6));
   transform: translateY(100%);

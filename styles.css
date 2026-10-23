@@ -76,6 +76,9 @@ footer { margin-top: 64px; border-top: 1px solid var(--rule); padding-block: 20p
 .experience-title { display: block; font-size: 20px; font-weight: 500; line-height: 1.4; margin-block: 8px; }
 .experience-role { display: block; color: var(--muted); }
 .experience-entry ul { padding: 8px 24px 20px 44px; }
+.award-photo { margin: 32px 0 0; max-width: 440px; }
+.award-photo img { display: block; width: 100%; height: auto; }
+.award-photo figcaption { margin-top: 12px; font-size: 14px; line-height: 1.5; letter-spacing: .01em; color: var(--muted); }
 .contact-details { padding: 32px; background: var(--surface-soft); }
 .contact-details h2 { margin-bottom: 24px; }
 .contact-details dl { margin: 0; }
